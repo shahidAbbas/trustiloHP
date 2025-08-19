@@ -13,7 +13,7 @@ deploy_test:
     VERCEL_PROJECT: "whitelabel-test"  # Preview project
   script:
     - npm install --global vercel@latest
-    - npm install
+    - npm install --legacy-peer-deps
     - npm run prebuild
     - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the preview project
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
@@ -29,7 +29,7 @@ deploy_production:
     VERCEL_PROJECT: "whitelabel-prod"  # Production project
   script:
     - npm install --global vercel@latest
-    - npm install
+    - npm install --legacy-peer-deps
     - npm run prebuild
     - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
@@ -45,7 +45,7 @@ deploy_stage:
     VERCEL_PROJECT: "whitelabel-stage"  # Production project
   script:
     - npm install --global vercel@latest
-    - npm install
+    - npm install --legacy-peer-deps
     - npm run prebuild
     - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN

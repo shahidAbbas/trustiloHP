@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@dotlottie/react-player": "^1.6.19",
     "lottie-react": "^2.4.1",
     "next": "15.4.7",
     "react": "19.1.0",
