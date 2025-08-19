@@ -58,9 +58,11 @@ redeploy_production:
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
-    - vercel build --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    # pull env from the existing project
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    # build and deploy without re-linking
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
 
 redeploy_stage:
   stage: deploy
@@ -70,9 +72,9 @@ redeploy_stage:
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
-    - vercel build --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
 
 redeploy_test:
   stage: deploy
@@ -82,7 +84,8 @@ redeploy_test:
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
-    - vercel build --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+
 
