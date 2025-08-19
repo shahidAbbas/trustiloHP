@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 
 export default function AnimatedIcon() {
-  const [animationData, setAnimationData] = useState<any>(null);
+  const [animationData, setAnimationData] = useState<unknown>(null);
 
   useEffect(() => {
     fetch("/whitelabel.json") // file inside /public/
