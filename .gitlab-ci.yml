@@ -14,7 +14,6 @@ deploy_test:
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - npm run prebuild
     - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the preview project
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
@@ -30,7 +29,6 @@ deploy_production:
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - npm run prebuild
     - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
@@ -46,7 +44,6 @@ deploy_stage:
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - npm run prebuild
     - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
