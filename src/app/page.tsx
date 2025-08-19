@@ -4,9 +4,9 @@ import AnimatedIcon from "@/components/AnimatedIcon";
 export default function ConfirmationPage() {
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-white pt-16 pb-0">
-      <AnimatedIcon />
+      <div className="mb-6"><AnimatedIcon /></div>
 
-      <span className="mt-6 text-lg font-medium text-gray-900">
+      <span className="text-lg font-medium text-gray-900">
         Ready for Confirmation
       </span>
 

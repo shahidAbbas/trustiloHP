@@ -22,7 +22,11 @@ export default function AnimatedIcon() {
   }
 
   return (
-    <div className="relative flex items-center justify-center w-40 h-40 rounded-full bg-blue-100">
+    <div className="relative flex items-center justify-center rounded-full bg-blue-100"
+      style={{
+        width: `calc(var(--spacing) * 40 * ${process.env.NEXT_PUBLIC_ANIMATED_ICON_SCALE})`, 
+        height:`calc(var(--spacing) * 40 * ${process.env.NEXT_PUBLIC_ANIMATED_ICON_SCALE})`}}
+    >
       <div className="absolute w-32 h-32 rounded-full bg-blue-200" />
       <Lottie
         animationData={animationData}

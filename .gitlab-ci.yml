@@ -50,3 +50,12 @@ deploy_stage:
     - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
     - if [ $? -ne 0 ]; then echo "Deploy failed"; exit 1; fi  # Check for errors
     
+redeploy:
+  stage: deploy
+  when: manual
+  script:
+    - npm install --global vercel@latest
+    - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN
+    - vercel env pull .env.production --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
