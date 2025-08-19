@@ -1,0 +1,55 @@
+default:
+  image: node:lts  # Use the latest LTS version of Node.js
+
+cache:
+  paths:
+    - node_modules/
+
+deploy_test:
+  stage: deploy
+  only:
+    - test  # This will run only when the 'test' branch is pushed
+  variables:
+    VERCEL_PROJECT: "whitelabel-test"  # Preview project
+  script:
+    - npm install --global vercel@latest
+    - npm install
+    - npm run prebuild
+    - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the preview project
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prod --prebuilt --token=$VERCEL_TOKEN
+    - if [ $? -ne 0 ]; then echo "Deploy failed"; exit 1; fi  # Check for errors
+
+deploy_production:
+  stage: deploy
+  only:
+    - main  # This will run only when the 'main' branch is pushed
+  variables:
+    VERCEL_PROJECT: "whitelabel-prod"  # Production project
+  script:
+    - npm install --global vercel@latest
+    - npm install
+    - npm run prebuild
+    - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+    - if [ $? -ne 0 ]; then echo "Deploy failed"; exit 1; fi  # Check for errors
+
+deploy_stage:
+  stage: deploy
+  only:
+    - stage  # This will run only when the 'main' branch is pushed
+  variables:
+    VERCEL_PROJECT: "whitelabel-stage"  # Production project
+  script:
+    - npm install --global vercel@latest
+    - npm install
+    - npm run prebuild
+    - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+    - if [ $? -ne 0 ]; then echo "Deploy failed"; exit 1; fi  # Check for errors
+    
