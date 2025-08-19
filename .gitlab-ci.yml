@@ -50,14 +50,39 @@ deploy_stage:
     - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
     - if [ $? -ne 0 ]; then echo "Deploy failed"; exit 1; fi  # Check for errors
     
-redeploy:
+redeploy_production:
   stage: deploy
   when: manual
+  variables:
+    VERCEL_PROJECT: "whitelabel-prod"
   script:
     - npm install --global vercel@latest
     - npm install --legacy-peer-deps
-    - vercel link --yes --project=$VERCEL_PROJECT --token=$VERCEL_TOKEN # Link to the production project
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-    - vercel build --prod --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
-    - if [ $? -ne 0 ]; then echo "Deploy failed"; exit 1; fi
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel build --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+
+redeploy_stage:
+  stage: deploy
+  when: manual
+  variables:
+    VERCEL_PROJECT: "whitelabel-stage"
+  script:
+    - npm install --global vercel@latest
+    - npm install --legacy-peer-deps
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel build --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+
+redeploy_test:
+  stage: deploy
+  when: manual
+  variables:
+    VERCEL_PROJECT: "whitelabel-test"
+  script:
+    - npm install --global vercel@latest
+    - npm install --legacy-peer-deps
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel build --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --project=$VERCEL_PROJECT
+
