@@ -5,7 +5,7 @@ export default function ConfirmationPage() {
   return (
     <>
       <div className="flex flex-col items-center justify-start min-h-screen bg-white pb-0"
-        style={{ paddingTop: 'calc(var(--spacing) * 16 + 116px)' }}
+        style={{ paddingTop: 'calc(var(--spacing) * 16 + 156px)' }}
       >
         <div className="mb-6"><AnimatedIcon /></div>
 
