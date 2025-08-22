@@ -22,14 +22,23 @@ export default function AnimatedIcon() {
   }
 
   return (
-    <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-blue-100"
+    <div className="relative flex items-center justify-center rounded-full bg-blue-100"
+      style={{
+        height: `calc(var(--spacing) * 40 * ${process.env.NEXT_PUBLIC_ANIMATED_RING_OUTER_SCALE ?? 1.3})`,
+        width: `calc(var(--spacing) * 40 *${process.env.NEXT_PUBLIC_ANIMATED_RING_OUTER_SCALE ?? 1.3})`
+      }}
     >
-      <div className="absolute w-32 h-32 rounded-full bg-blue-200" />
+      <div className="absolute rounded-full bg-blue-200"
+        style={{
+          height: `calc(var(--spacing) * 32 * ${process.env.NEXT_PUBLIC_ANIMATED_RING_INNER_SCALE ?? 1.3})`,
+          width: `calc(var(--spacing) * 32 *${process.env.NEXT_PUBLIC_ANIMATED_RING_INNER_SCALE ?? 1.3})`
+        }}
+      />
       <Lottie
         animationData={animationData}
         loop
         autoplay
-        style={{ width: "80px", height: "80px", zIndex: 10, scale: process.env.NEXT_PUBLIC_ANIMATED_ICON_SCALE }}
+        style={{ width: "80px", height: "80px", zIndex: 10, scale: process.env.NEXT_PUBLIC_ANIMATED_ICON_SCALE ?? 2.6 }}
       />
     </div>
   );
