@@ -1,5 +1,6 @@
 // app/confirmation/page.tsx
 import AnimatedIcon from "@/components/AnimatedIcon";
+import { RedirectButton } from "@/components/RedirectButton";
 
 export default function ConfirmationPage() {
   return (
@@ -20,7 +21,10 @@ export default function ConfirmationPage() {
         >
           Trusted Channel Online
         </button> */}
+        <RedirectButton kobilSid={process.env.KOBIL_SID || ''} redirectServer={process.env.KOBIL_REDIRECT_SERVER || ''} />
+        <img className="fixed bottom-4 left-4 w-16 h-16 max-w-full object-contain" src='/poweredbykobil.png' alt="Whitelabel Icon"></img>
       </div>
+
     </>
   );
 }
