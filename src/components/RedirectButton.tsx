@@ -11,12 +11,10 @@ export const RedirectButton = ({redirectServer, tabName}:{redirectServer:string,
 
   return (
       <button
-          className="mt-4 px-6 py-2 border border-[#1C69D4]
-             text-[16px] leading-6 font-medium text-[#1C69D4] font-barlow
-             rounded-[4px] bg-[#1C69D440]"
+          className=""
              onClick={handleButtonClick}
         >
-          Redirect
+          <img className="fixed bottom-5 right-4 w-16 h-16 max-w-full object-contain" src='/kobilplusv2.png' alt="Kobil Plus logo"></img>
         </button> 
   )
 }
