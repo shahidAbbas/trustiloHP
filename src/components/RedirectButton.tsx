@@ -5,7 +5,7 @@ import React from 'react'
 export const RedirectButton = ({redirectServer,kobilSid}:{redirectServer:string,kobilSid:string}) => {
    const handleButtonClick=()=>{
    
-      redirect(`${redirectServer}?sID=${kobilSid}&redirectToPage=/chatscreen`)
+      redirect(`${redirectServer}?sID=${kobilSid}`)
 
   }
 
