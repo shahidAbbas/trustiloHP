@@ -21,8 +21,9 @@ export default function ConfirmationPage() {
         >
           Trusted Channel Online
         </button> */}
-        <RedirectButton kobilSid={process.env.KOBIL_SID || ''} redirectServer={process.env.KOBIL_REDIRECT_SERVER || ''} />
-        <img className="fixed bottom-4 left-4 w-16 h-16 max-w-full object-contain" src='/poweredbykobil.png' alt="Whitelabel Icon"></img>
+
+        <RedirectButton tabName={process.env.SWITCH_TO_TAB || ''} redirectServer={process.env.KOBIL_REDIRECT_SERVER || ''} />
+        <img className="fixed bottom-5 left-4 w-16 h-16 max-w-full object-contain" src='/poweredbykobil.png' alt="Whitelabel Icon"></img>
       </div>
 
     </>

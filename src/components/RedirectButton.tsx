@@ -2,10 +2,10 @@
 import { redirect } from 'next/navigation'
 import React from 'react'
 
-export const RedirectButton = ({redirectServer,kobilSid}:{redirectServer:string,kobilSid:string}) => {
+export const RedirectButton = ({redirectServer, tabName}:{redirectServer:string, tabName: string}) => {
    const handleButtonClick=()=>{
-   
-      redirect(`${redirectServer}?sID=${kobilSid}`)
+      const redirectUrl=`${redirectServer}?action=switchToSmartScreenTab&tab=${tabName}`
+      redirect(redirectUrl)
 
   }
 
