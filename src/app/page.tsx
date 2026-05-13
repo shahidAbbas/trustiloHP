@@ -5,8 +5,8 @@ import { RedirectButton } from "@/components/RedirectButton";
 export default function ConfirmationPage() {
   return (
     <>
-      <div className="flex flex-col items-center justify-start min-h-screen bg-white pb-0"
-        style={{ paddingTop: `calc(var(--spacing) * 16 + ${process.env.TOP_OFFSET ?? 176}px)` }}
+      <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-white"
+        style={{ paddingBottom: `${process.env.BOTTOM_OFFSET ?? 80}px` }}
       >
         <div className="mb-6"><AnimatedIcon /></div>
 
